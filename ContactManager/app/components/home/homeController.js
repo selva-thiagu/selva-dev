@@ -1,7 +1,8 @@
 /**
-*  Module: Home
+*  Component: Home
 *
-* Description: Welcome page of the application
+* Description: Welcome page of the application is added as additional component
+* for better understanding of the folder structure
 */
 angular.module('home', []);
 
