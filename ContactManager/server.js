@@ -12,7 +12,7 @@ var db = require('./config/db-config');
 var mongoose = require('mongoose');
 
 // connect to our mongoDB database 
-mongoose.connect(db.url); 
+mongoose.connect(db.url);
 
 var http = require('http');
 var bodyParser = require('body-parser');
@@ -35,20 +35,20 @@ app.listen(port);
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 app.use(bodyParser.json());
 app.use(methodOverride());
-
-
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 //app.use(methodOverride('X-HTTP-Method-Override')); 
-
-// set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
 
 // routes ==================================================
 // configure our routes
 require('./routes')(app);
+
+// set the static files location /public/img will be /img for users
+app.use(express.static('public'));
 
 // shoutout to the user                     
 console.log('Magic happens on port ' + port);

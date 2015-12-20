@@ -19,16 +19,16 @@ contactManagementApp.config(['$routeProvider', '$locationProvider', function ($r
 			controller: 'contactController'
 		})
 		.when('/contact/update/:id',
-		{
-			templateUrl: 'app/components/contacts/contactAddEdit.html',
-			controller: 'contactController'
+		{	
+			controller: 'editContactController',
+			templateUrl: 'app/components/contacts/contactEdit.html'
 		})
 		.when('/contact/add',
-		{
-			templateUrl: 'app/components/contacts/contactAddEdit.html',
-			controller: 'contactController'
+		{	
+			controller: 'contactController',
+			templateUrl: 'app/components/contacts/contactAddEdit.html'
 		})
-		.when('/contact/remove/:id',
+		.when('/contact/remove/',
 		{
 			templateUrl: 'app/components/contacts/contactsView.html',
 			controller: 'contactController'
