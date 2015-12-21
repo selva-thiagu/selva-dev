@@ -3,29 +3,40 @@
     <form role="form" class="form-horizontal contract-form" name="addForm" novalidate>
         <div class="form-group">
             <label class="col-sm-4 control-label">Full name:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control contact-name-input" ng-model="editContact.name" required>
+            <div class="col-sm-6" style="width:40%">
+                <input type="text" name="contactName" class="form-control contact-name-input" ng-model="editContact.name" required>
+            </div>
+            <div ng-messages="addForm.contactName.$error" style="float:left;color:red">
+                <div ng-message="required">This field is required</div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Email address:</label>
-            <div class="col-sm-6">
-                <input type="email" class="form-control contact-email-input" ng-model="editContact.email" required>
+            <div class="col-sm-6" style="width:40%">
+                <input type="email" name="contactEmail" class="form-control contact-email-input" ng-model="editContact.email" required>
+            </div>
+            <div ng-messages="addForm.contactEmail.$error" style="float:left;color:red">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="email">Your email address is invalid</div>
             </div>
         </div>
         <input type="hidden" ng-model="editContact.id">
         <input type="hidden" ng-model="editContact.avatar">
         <div class="form-group">
             <label class="col-sm-4 control-label">Telephone number:</label>
-            <div class="col-sm-6">
-                <input type="tel" class="form-control contact-tel-input" ng-model="editContact.phone" required>
+            <div class="col-sm-6" style="width:40%">
+                <input type="tel" name="contactPhone" class="form-control contact-tel-input" ng-model="editContact.phone" required ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/">
+            </div>
+            <div ng-messages="addForm.contactPhone.$error" style="float:left;color:red">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="pattern">Must be a valid 10 digit phone number</div>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-3">
+            <div class="col-sm-offset-4 col-sm-3" style="width:20%">
                 <button type="submit" ng-click="addorsave(editContact)" class="btn btn-outline btn-lg btn-block">Submit</button>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3" style="width:20%">
                 <a href="#/contacts" class="btn btn-outline btn-lg btn-block">Cancel</a>
             </div>
         </div>

@@ -3,7 +3,7 @@
  *
  * Description: This module is responsible for contact management and will handle CRUD operations on contacts
  */
-angular.module('contacts', ['crud']);
+angular.module('contacts', ['crud', 'ngMessages']);
 
 angular.module('contacts').controller('contactController', ['$scope', '$location', 'crudService', function($scope, $location, crudService) {
 
