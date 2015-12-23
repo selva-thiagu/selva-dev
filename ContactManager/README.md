@@ -7,7 +7,7 @@ A Node.js app using [Express 4](http://expressjs.com/) [angaular.js](https://doc
 Make sure you have [Node.js](http://nodejs.org/) and the [npm] installed.
 
 ```sh
-$ git clone https://github.com/selva-thiagu/selva-dev/tree/master/ContactManager
+$ git clone https://github.com/selva-thiagu/selva-dev
 $ cd ContactManager
 $ npm install
 $ node server.js
