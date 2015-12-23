@@ -3,12 +3,11 @@
  *
  * Description: This module is responsible for contact management and will handle CRUD operations on contacts
  */
-angular.module('contacts', ['crud', 'ngMessages']);
+angular.module('contacts', ['crud', 'ngMessages', 'angularUtils.directives.dirPagination']);
 
 angular.module('contacts').controller('contactController', ['$scope', '$location', 'crudService', function($scope, $location, crudService) {
 
-    //Contains the list of contacts to be rendered.
-    $scope.contacts = [];
+
     //Contains the ngModel values for form interaction.
     $scope.form = {
         id: "",
@@ -17,6 +16,10 @@ angular.module('contacts').controller('contactController', ['$scope', '$location
         phone: "",
         avatar: ""
     };
+    //Pagination attributes
+    $scope.currentPage = 1;
+    $scope.pageSize = 6;
+    $scope.meals = [];
 
     //get data from the remote source
     loadDatafromSource($scope.url);
@@ -48,6 +51,8 @@ angular.module('contacts').controller('contactController', ['$scope', '$location
      */
     // This method will load the data from the source.
     function loadDatafromSource(url) {
+        //Contains the list of contacts to be rendered.
+        $scope.contacts = [];
         // The crudService returns a promise.
         url = "api/getAllContacts";
         crudService.getList(url)
@@ -60,12 +65,9 @@ angular.module('contacts').controller('contactController', ['$scope', '$location
             );
     };
 
-    function loadDatafromLocalStorage() {
-        $scope.contacts = JSON.parse(localStorage.getItem('contacts'));
-        $scope.maxId = Math.max.apply(Math, $scope.contacts.map(function(o) {
-            return o.id;
-        }));
-    }
+    $scope.pageChangeHandler = function(num) {
+        console.log('meals page changed to ' + num);
+    };
 
 }]);
 
@@ -88,3 +90,11 @@ angular.module('contacts').controller('editContactController', ['$scope', '$loca
     };
 
 }]);
+
+function OtherController($scope) {
+    $scope.pageChangeHandler = function(num) {
+        console.log('going to page ' + num);
+    };
+}
+
+angular.module('contacts').controller('OtherController', OtherController);

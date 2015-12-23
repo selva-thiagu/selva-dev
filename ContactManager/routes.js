@@ -9,6 +9,6 @@ module.exports = function(app) {
     app.get('/api/getcontact', crudContact.getContact);
     app.post('/api/addcontact', crudContact.addContact);
     app.put('/api/updatecontact', crudContact.updateContact);
-    app.delete('/api/removecontact/', crudContact.removeContact);
+    app.delete('/api/removecontact', crudContact.removeContact);
 	// these need to go first:
 };
