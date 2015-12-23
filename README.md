@@ -1,2 +1,0 @@
-# selva-dev
-dev apps
